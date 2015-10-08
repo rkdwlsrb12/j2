@@ -1,0 +1,150 @@
+InputStream <|-- FileInputStream
+InputStream <|-- StringBufferInputStream
+InputStream <|-- ByteArrayInputStream
+InputStream <|-- FilterInputStream
+FilterInputStream <|-- PushbackInputStream
+FilterInputStream <|-- BufferedInputStream
+FilterInputStream <|-- DataInputStream
+FilterInputStream <|-- LineNumberInputStream
+
+ 
+abstract class InputStream{
+ +InputStream()
+ +abstract read():int
+ +read(byte[] b):int 
+ +read(byte[] b, int off, int len):int
+ +close():void
+ +mark(int readlimit):void
+ +markSupported():boolean
+ +available():int
+ +skip(long n):long
+}
+
+class FileInputStream{
+ +FileInputStream(File file)
+ +FileInputStream(FileDescriptor fdObj)
+ +FileInputStream(String name)
+ #finalize():void
+ +getChannel():FileChannel
+ +getFD():FileDescriptor
+ +read():int
+ +read(byte[] b):int 
+ +read(byte[] b, int off, int len):int
+ +close():void
+ +available():int
+ +skip(long n):long
+}
+
+class StringBufferInputStream{
+ #buffer:String
+ #count:int
+ #pos:int
+ +StringBufferInputStream(String s)
+ +read():int 
+ +read(byte[] b, int off, int len):int
+ +reset():void
+ +available():int
+ +skip(long n):long
+}
+
+class ByteArrayInputStream{
+ #buf:byte[]
+ #count:int
+ #mark:int
+ #pos:int
+ +ByteArrayInputStream(byte[] buf)
+ +ByteArrayInputStream(byte[] buf, int offset, int length)
+ +read():int 
+ +read(byte[] b, int off, int len):int
+ +close():void
+ +mark(int readAhreadLimit):void
+ +markSupported():boolean
+ +available():int
+ +skip(long n):long
+ +reset():void
+}
+
+class FilterInputStream{
+ #in:InputStream
+ #FilterInputStream(InputStream in)
+ +read():int
+ +read(byte[] b):int 
+ +read(byte[] b, int off, int len):int
+ +close():void
+ +mark(int readlimit):void
+ +markSupported():boolean
+ +available():int
+ +skip(long n):long
+ +reset():void
+}
+
+class PushbackInputStream{
+ #buf:byte[]
+ #pos:int
+ +PushbackInputStream(InputStream in)
+ +PushbackInputStream(InputStream in, int size)
+ +read():int
+ +read(byte[] b, int off, int len):int
+ +close():void
+ +mark(int readlimit):void
+ +markSupported():boolean
+ +available():int
+ +skip(long n):long
+ +reset():void
+ +unread(byte[] b):void
+ +unread(byte[] b, int off, int len):void
+ +unread(int b):void
+}
+
+class BufferedInputStream{
+ #buf:byte[]
+ #count:int
+ #marklimit:int
+ #markpos:int
+ #pos:int
+ +BufferedInputStream(InputStream in)
+ +BufferedInputStream(InputStream in, int size)
+ +read():int
+ +read(byte[] b, int off, int len):int
+ +close():void
+ +mark(int readlimit):void
+ +markSupported():boolean
+ +available():int
+ +skip(long n):long
+ +reset():void
+}
+
+class DataInputStream{
+ +DataInputStream(InputStream in)
+ +read(byte[] b):int 
+ +read(byte[] b, int off, int len):int
+ +readBoolean():boolean
+ +readByte():byte
+ +readChar():char
+ +readDouble():double
+ +readFloat():float
+ +readFully(byte[] b):void
+ +readFully(byte[] b, int off, int len):void
+ +readInt():int
+ +readLine():String
+ +readLong():long
+ +readShort():short
+ +readUnsignedByte():int
+ +readUnsignedShort():int
+ +readUTF():String
+ +readUTF(DataInput in):static String
+ +skipBytes(int n):int
+}
+
+class LineNumberInputStream{
+ +LineNumberInputStream(InputStream in)
+ +read():int
+ +read(byte[] b, int off, int len):int
+ +mark(int readlimit):void
+ +available():int
+ +skip(long n):long
+ +reset():void
+ +getLineNumber():int
+ +setLineNumber(int lineNumber):void
+}
+ 
