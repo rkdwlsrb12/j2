@@ -10,11 +10,11 @@ public class PrintSpooler {
 	 public static synchronized PrintSpooler getInstance() throws Exception{
 	  if (uniqueInstance == null) {
 	   uniqueInstance = new PrintSpooler();
-	   System.out.println("Opening "+ (numCalled++)+"번째"+" spooler");
+	   System.out.println("Opening "+ (numCalled++)+"bunjjae"+" spooler");
 	   System.out.println("Printer opened");
 	  }
 	  else
-		  throw new Exception( "Opening "+(numCalled++)+"번째"+ " spooler"+"\n"+"Only print one at a time");
+		  throw new Exception( "Opening "+(numCalled++)+"bunjjae"+ " spooler"+"\n"+"Only print one at a time");
 	  return uniqueInstance;
 	 }
 	 public static String showType(){
