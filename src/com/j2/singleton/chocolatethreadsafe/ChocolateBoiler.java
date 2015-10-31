@@ -5,7 +5,10 @@ public class ChocolateBoiler{
   private boolean boiled;
   private static ChocolateBoiler uniqueInstance;
   private static int numCalled;
-  private ChocolateBoiler(){}
+  private ChocolateBoiler(){
+	  empty=true;
+	  boiled=false;
+  }
   public static synchronized ChocolateBoiler getInstance(){
 	  if (uniqueInstance == null) {
 			System.out.println("Creating unique instance of Chocolate Boiler");
@@ -19,7 +22,9 @@ public class ChocolateBoiler{
     if(isEmpty()){
       empty=false;
       boiled=false;
+      System.out.println("Filling the Chocolate Boiler ");
     }
+   
   }
     public boolean isEmpty(){
       return empty;
@@ -29,6 +34,7 @@ public class ChocolateBoiler{
 		if (!isEmpty() && isBoiled()) {
 			
 			empty = true;
+			System.out.println("Draining the Chocolate Boiler ");
 		}
 	}
  
@@ -36,6 +42,7 @@ public class ChocolateBoiler{
 		if (!isEmpty() && !isBoiled()) {
 			
 			boiled = true;
+			System.out.println("Boiling the Chocolate Boiler ");
 		}
 	}
   
