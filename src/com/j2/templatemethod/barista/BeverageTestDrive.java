@@ -13,10 +13,15 @@ public class BeverageTestDrive {
 		coffee.prepareRecipe();
 		
 	
-		CoffeeWithHook coffeeHook = new CoffeeWithHook();
+		CaramelMacchiatoWithHook caramelmacchiatoHook = new CaramelMacchiatoWithHook();
  
 	
 		System.out.println("\nMaking Caramel Macchiato...");
+		caramelmacchiatoHook.prepareRecipe();
+		
+		CoffeeWithHook coffeeHook = new CoffeeWithHook();
+ 
+		System.out.println("\nMaking coffee...");
 		coffeeHook.prepareRecipe();
 		
 		
